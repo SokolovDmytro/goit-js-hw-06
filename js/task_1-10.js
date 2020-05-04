@@ -107,7 +107,17 @@ console.log('================task-10=====================')
 // и они должны быть отсортированы в алфавитном порядке.
 
 const getSortedUniqueSkills = users => {
-  // твой код
+  const totalSkills = users.reduce((allSkills, user) => {
+    allSkills.push(...user.skills);
+    return allSkills;
+  }, []);
+  return totalSkills.reduce((acc, current) => {
+    current = current.trim();
+    if (!acc.includes(current)) {
+      acc.push(current);
+    }
+    return acc.sort();
+  }, []);
 };
 
 console.log(getSortedUniqueSkills(users));
